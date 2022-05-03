@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:${SERVICE_PORT:0}}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://dbuser:Passw0rd11235@cluster0.abvys.mongodb.net/RetailClientDB?retryWrites=true&w=majority
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://192.168.0.121:8761/eureka
+
+
+constants:
+  url:
+    server: http://192.168.0.121:8080

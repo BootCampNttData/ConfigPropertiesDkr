@@ -1,0 +1,56 @@
+server:
+  port: 8080
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://192.168.0.121:8761/eureka
+
+#  service-url:
+#    default-zone: http://192.168.0.121:8761/eureka
+#  instance:
+#    prefer-ip-address: true
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: retailclient
+          uri: lb://retailclient
+          predicates:
+            - Path=/retailclient/**
+        - id: businessclient
+          uri: lb://businessclient
+          predicates:
+            - Path=/businessclient/**
+        - id: credit
+          uri: lb://credit
+          predicates:
+            - Path=/credit/**
+        - id: creditcard
+          uri: lb://creditcard
+          predicates:
+            - Path=/creditcard/**
+        - id: debitcard
+          uri: lb://debitcard
+          predicates:
+            - Path=/debitcard/**
+        - id: savingaccount
+          uri: lb://savingaccount
+          predicates:
+            - Path=/savingaccount/**
+        - id: currentaccount
+          uri: lb://currentaccount
+          predicates:
+            - Path=/currentaccount/**
+        - id: fixeddepositaccount
+          uri: lb://fixeddepositaccount
+          predicates:
+            - Path=/fixeddepositaccount/**
+        - id: debitcard
+          uri: lb://debitcard
+          predicates:
+            - Path=/debitcard/**
